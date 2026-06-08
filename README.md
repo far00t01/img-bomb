@@ -33,10 +33,10 @@ The script allows you to generate two specific types of Proof of Concept (PoC) f
 - **Impact on the Server:** When the backend attempts to process, resize, or validate the image pixels using system libraries, the rendering engine is forced to deserialize the entire bitmap. This triggers a sudden allocation of **over 2.7 GB of RAM** and critical CPU spikes, exposing a lack of dimension limits (*Width/Height restrictions*) in the application.
 
 ## Main Features
-- **Optimized Compression (Level 9):** Minimizes the storage impact on the auditor's local machine while maximizing the decompression impact on the target.
-- **Professional CLI Interface:** Clean visual layout with structured continuous tree-guides for the terminal.
-- **Dynamic Generation:** Allows instantaneous customization of pixel dimensions or binary sizes in KB, MB, or GB.
-- **Zero Complex Dependencies:** Built on Python's standard library and powered exclusively by `Pillow`.
+- Minimizes the storage impact on the auditor's local machine while maximizing the decompression impact on the target.
+- Clean visual layout with structured continuous tree-guides for the terminal.
+- Allows instantaneous customization of pixel dimensions or binary sizes in KB, MB, or GB.
+- Built on Python's standard library and powered exclusively by `Pillow`.
 
 ## Installation
 Ensure you have Python 3.8 or higher installed, then set up the repository:
