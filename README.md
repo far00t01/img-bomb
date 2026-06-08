@@ -1,8 +1,10 @@
 <div align="center">
 
 # IMG-Bomb💣
+
+<img width="480" height="218" alt="img-bomb" src="https://github.com/user-attachments/assets/75931e98-6ceb-471a-ba86-cc88c777a834" />
+
 ### *Resource Exhaustion & Pixel Flood Testing Tool*
-<img width="1305" height="573" alt="1" src="https://github.com/user-attachments/assets/be51da5a-3316-4b6b-b4de-82211e04e4e3" />
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
