@@ -28,7 +28,7 @@ def disk_exhaustion_mode():
     print("\n┌──[ Mode: Disk Space Exhaustion ]")
     while True:
         try:
-            entrada = input("├── Enter size (e.g., 500 MB) [or 'exit']: ").strip()
+            entrada = input("├── Enter size (e.g., 5 KB, 500 MB, 1 GB) [or 'exit']: ").strip()
             if entrada.lower() == 'exit':
                 print("└── [*] Returning to main menu.\n")
                 return
