@@ -14,15 +14,15 @@
 
 <br>
 
-**IMG-Bomb💣** is a security testing tool designed for web application auditors and developers. It allows you to simulate Denial of Service (DoS) vectors based on image file processing, helping to identify resource exhaustion vulnerabilities in both disk space and memory/CPU allocation.
+**IMG Bomb💣** is a security testing tool designed for web application auditors and developers. It allows you to simulate Denial of Service (DoS) vectors based on image file processing, helping to identify resource exhaustion vulnerabilities in both disk space and memory/CPU allocation.
 
 ## The Concept Behind the Tool
-Multimedia file processing is one of the most resource-intensive tasks for a web server. IMG-Bomb exploits the decompression logic of popular libraries (such as GD, Imagick, or ImageMagick) to evaluate whether a web application implements strict validation controls on user-uploaded files.
+Multimedia file processing is one of the most resource-intensive tasks for a web server. IMG Bomb exploits the decompression logic of popular libraries (such as GD, Imagick, or ImageMagick) to evaluate whether a web application implements strict validation controls on user-uploaded files.
 
 ## Disclaimer
 This tool is provided exclusively for educational purposes, quality assurance (QA), and authorized ethical auditing. Using IMG-Bomb against platforms without the explicit consent of the owners is illegal. The author is not responsible for any misuse of this software.
 
-## Why Use IMG-Bomb?
+## Why Use IMG Bomb?
 The script allows you to generate two specific types of Proof of Concept (PoC) files to verify infrastructure resilience:
 
 **Disk Space Exhaustion**
