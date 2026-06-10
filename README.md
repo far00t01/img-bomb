@@ -1,6 +1,6 @@
 <div align="center">
 
-# IMG-Bomb💣
+# IMG Bomb💣
 
 <img width="480" height="218" alt="img-bomb" src="https://github.com/user-attachments/assets/75931e98-6ceb-471a-ba86-cc88c777a834" />
 
