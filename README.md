@@ -52,7 +52,7 @@ cd img-bomb
 Usage
 To execute the framework, run the main script with standard privileges:
 ```bash
-python3 img_bomb.py
+python3 img-bomb.py
 ```
 
 **Disk Space Exhaustion**
