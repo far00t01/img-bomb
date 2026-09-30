@@ -84,3 +84,6 @@ _Developed and maintained by: Fabián Rosales_
 - **Medium:** [@far00t01](https://medium.com/@far00t01/)
 - **GitHub:** [far00t01](https://github.com/far00t01)
 - **LinkedIn:** [frosalesr](https://linkedin.com/in/frosalesr)
+
+#### AI Collaboration
+This tool and its documentation have been iteratively developed, refined, and optimized in collaboration with **Gemini AI**, Google's advanced personal AI collaborator, ensuring clean architecture, robust error handling, and professional reporting standards.
